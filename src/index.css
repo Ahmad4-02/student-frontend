@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* إعدادات عامة */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: #f1f5f9; /* نفس خلفية dash */
+}
+
+/* تحسين مظهر الأزرار */
+button {
+  transition: 0.2s ease-in-out;
+}
+
+/* تحسين مظهر الـ input */
+input:focus {
+  outline: none;
+  border-color: #2563eb; /* blue-600 */
+}
