@@ -4,7 +4,6 @@ import StudentAuth from "./auth/StudentAuth";
 import Profile from "./pages/Profile";
 import Applications from "./pages/Applications";
 
-
 // ✅ تحقق من تسجيل الدخول
 const isAuthenticated = () => {
   return !!localStorage.getItem("student_token");
@@ -17,14 +16,8 @@ function ProtectedRoute({ children }) {
 export default function App() {
   return (
     <Routes>
-      {/* ✅ صفحة تسجيل الطالب */}
+      {/* ✅ صفحة تسجيل الدخول */}
       <Route path="/student-auth" element={<StudentAuth />} />
-
-      {/* داشبورد الطالب بعد الدخول */}
-      <Route path="/student/dashboard" element={<Dashboard />} />
-      
-      {/* إعادة توجيه افتراضية */}
-      <Route path="*" element={<Navigate to="/student/login" />} />
 
       {/* ✅ Dashboard محمي */}
       <Route
@@ -35,7 +28,8 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-      {/* ✅ صفحة الملف الشخصي محمية */}
+
+      {/* ✅ الملف الشخصي محمي */}
       <Route
         path="/profile"
         element={
@@ -45,6 +39,7 @@ export default function App() {
         }
       />
 
+      {/* ✅ الطلبات محمية */}
       <Route
         path="/applications"
         element={
@@ -54,14 +49,8 @@ export default function App() {
         }
       />
 
-
-
-      {/* ✅ أي رابط غلط يرجع لتسجيل الطالب */}
+      {/* ✅ أي رابط خاطئ يرجع لتسجيل الدخول */}
       <Route path="*" element={<Navigate to="/student-auth" />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/applications" element={<Applications />} />
-
     </Routes>
   );
 }
